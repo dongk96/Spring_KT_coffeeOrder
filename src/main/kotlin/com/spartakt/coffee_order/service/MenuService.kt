@@ -24,6 +24,11 @@ class MenuService(private val menuRepository: MenuRepository) {
         return MenuDto.fromEntity(menu)
     }
 
+    fun findBest(): List<MenuDto> {
+        val menus = menuRepository.findTop3Menu()
+        return MenuDto.fromEntities(menus)
+    }
+
     @Transactional
     fun create(dto: MenuDto): MenuDto {
         val menu = Menu(dto.coffeeName, dto.description, dto.price)

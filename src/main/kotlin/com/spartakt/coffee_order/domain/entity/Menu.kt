@@ -5,7 +5,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener
 
 @Entity
 @EntityListeners(AuditingEntityListener::class)
-class Menu(coffeeName: String, description: String, price: Long) {
+class Menu(coffeeName: String, description: String, price: Long): BaseTimeEntity() {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,12 +23,18 @@ class Menu(coffeeName: String, description: String, price: Long) {
     @OneToMany(mappedBy = "menu")
     var orders: MutableList<Order> = mutableListOf()
 
+    @Column(name = "count")
+    var orderCnt: Long = 0
+
     fun update(coffeeName: String, description: String, price: Long) {
         this.coffeeName = coffeeName
         this.description = description
         this.price = price
     }
 
+    fun updateOrderCnt(orderCnt: Long) {
+        this.orderCnt = orderCnt
+    }
     fun addOrder(order: Order) {
         this.orders.add(order)
     }

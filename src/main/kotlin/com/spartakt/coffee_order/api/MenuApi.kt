@@ -37,6 +37,13 @@ class MenuApi(private val menuService: MenuService) {
         return ResponseEntity(SingleResponse.successOf(menu), HttpStatus.OK)
     }
 
+    @GetMapping("/v2/menus/top")
+    @PreAuthorize("hasRole('admin')")
+    fun findBest(): ResponseEntity<ListResponse<MenuDto>> {
+        val menus = menuService.findBest()
+        return ResponseEntity(ListResponse.successOf(menus), HttpStatus.OK)
+    }
+
     @PostMapping("/v2/menus")
     @PreAuthorize("hasRole('admin')")
     fun create(

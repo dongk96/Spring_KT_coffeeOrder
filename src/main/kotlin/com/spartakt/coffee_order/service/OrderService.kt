@@ -61,6 +61,7 @@ class OrderService(
 
         for( i in userOrders ) {
             i.updateCheck(true)
+            i.menu.updateOrderCnt(i.menu.orderCnt + 1)
         }
     }
 }
