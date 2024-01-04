@@ -32,4 +32,5 @@ class AuthApi(private val userService: UserService) {
         val token = userService.login(request.username, request.password)
         return ResponseEntity(SingleResponse.successOf("로그인 성공 !", token), HttpStatus.OK)
     }
+
 }
