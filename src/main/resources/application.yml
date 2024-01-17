@@ -1,3 +1,6 @@
+server:
+  port: 8080
+
 auth:
   jwt:
     issuer: team.sparta.com
@@ -12,3 +15,11 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
+  profiles:
+    active: local
+
+cloud:
+  aws:
+    credentials:
+      accessKey: AKIA2S26HGZE5IGERLGT
+      secretKey: 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
