@@ -16,10 +16,10 @@ spring:
     hibernate:
       ddl-auto: create
   profiles:
-    active: prod
+    active: dev
 
 cloud:
   aws:
     credentials:
-      accessKey: AKIA2S26HGZE5IGERLGT
-      secretKey: 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
+      accessKey: AKIA2S26HGZE2WS4RYDE
+      secretKey: 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
